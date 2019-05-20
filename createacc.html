@@ -1,0 +1,60 @@
+<link rel="stylesheet" href="login.css"></link>
+
+<html>
+
+<div class="login-page">
+  <div class="form">
+    <form onsubmit="return submitchecker();" class="login-form" name="form1" id="form1" action="http://localhost:8080/bankapp/createpassword.jsp" method="post">
+    <input type="text" placeholder="name" name="name" required />
+    <input type="password" placeholder="Address" name="address" required />
+	<div class="radio-buttons1">
+	<label for="gender">Male<input type = "radio" name="gender" value="M" checked /></label>
+	<label for="gender">Female<input type = "radio" name="gender" value="F"></label>
+	</div>
+	<br>
+	<div class="radio-buttons2">
+	<label for="accType">Current<input type = "radio" name="accType" value="C" checked></label>
+	<label for="accType">Savings<input type = "radio" name="accType" value="S"></label>
+	</div>
+	<button>Create</button>
+	<p class="message">Already have an account? <a href="http://localhost:8080/bankapp/index.html">Log in</a></p>
+    </form>
+  </div>
+</div>
+
+<script>
+$('.message a').click(function(){
+   $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+});
+
+
+function submitchecker(){
+	var r = true;
+	if (document.form1.name.value==""){
+		document.getElementById("noname").style.visibility="visible";
+		r = false;
+	}
+	else {
+		document.getElementById("noname").style.visibility="hidden";
+	}
+	
+	
+	if (document.form1.address.value==""){
+		document.getElementById("noaddress").style.visibility="visible";
+		r = false;
+	}
+	else {
+		document.getElementById("noaddress").style.visibility="hidden";
+	}
+	
+	if (r) {
+		document.form1.submit();
+		window.location.href = "createpassword.jsp";
+	} else {
+		return false;
+	}
+}
+</script>
+
+
+</html>
